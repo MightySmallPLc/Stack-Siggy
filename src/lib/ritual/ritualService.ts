@@ -3,20 +3,13 @@
 // Talks directly to the user's injected EIP-1193 wallet (MetaMask, Rabby…).
 // Responsibilities:
 //   - Ensure the wallet is on the Ritual chain (switch / add if needed).
-//   - Send a single transaction whose calldata carries our achievement JSON.
+//   - Send transactions to the deployed `CoinMergeRitual` contract.
 //
-// Why a self-transaction with calldata?
-//   We don't have a deployed contract yet. The cheapest, contract-free way to
-//   leave a verifiable record on an EVM testnet is to send a 0-value tx from
-//   the user's address TO their own address, with the achievement payload
-//   encoded in the `data` field. Anyone can later inspect the tx and decode
-//   the JSON from calldata. This keeps the integration lightweight while
-//   still being a real onchain interaction.
-//
-// FUTURE: swap `to` for a real Ritual achievement contract address and
-// replace the raw JSON calldata with an ABI-encoded function call.
+// The contract address + ABI live in ./contract.json (written at deploy time).
 
+import { encodeFunctionData, type Abi } from "viem";
 import { RITUAL_CHAIN } from "./networkConfig";
+import contractData from "./contract.json";
 
 type Eip1193Provider = {
   request: (args: { method: string; params?: unknown[] }) => Promise<unknown>;
@@ -27,7 +20,9 @@ function getProvider(): Eip1193Provider | undefined {
   return (window as unknown as { ethereum?: Eip1193Provider }).ethereum;
 }
 
-// Beginner-friendly error messages mapped from common EIP-1193 error codes.
+export const CONTRACT_ADDRESS = contractData.address as `0x${string}`;
+export const CONTRACT_ABI = contractData.abi as Abi;
+
 export type RitualErrorKind =
   | "no_wallet"
   | "rejected"
@@ -40,14 +35,6 @@ export class RitualError extends Error {
     super(message);
     this.kind = kind;
   }
-}
-
-function toHex(str: string): string {
-  // UTF-8 → hex, prefixed with "0x" — the canonical EVM calldata format.
-  const bytes = new TextEncoder().encode(str);
-  let hex = "0x";
-  for (const b of bytes) hex += b.toString(16).padStart(2, "0");
-  return hex;
 }
 
 /** Ensure the wallet is on the Ritual chain. Adds it if missing. */
@@ -96,19 +83,24 @@ export async function ensureRitualNetwork(): Promise<void> {
 }
 
 /**
- * Send a single self-transaction carrying the achievement payload in calldata.
- * Returns the resulting transaction hash.
+ * Call a function on the deployed CoinMergeRitual contract.
+ * Returns the resulting tx hash.
  */
-export async function sendAchievementTx(
+export async function sendContractTx(
   wallet: string,
-  payload: object,
+  functionName: string,
+  args: readonly unknown[] = [],
 ): Promise<string> {
   const provider = getProvider();
   if (!provider) {
     throw new RitualError("no_wallet", "No wallet detected.");
   }
 
-  const data = toHex(JSON.stringify(payload));
+  const data = encodeFunctionData({
+    abi: CONTRACT_ABI,
+    functionName,
+    args,
+  });
 
   try {
     const txHash = (await provider.request({
@@ -116,7 +108,7 @@ export async function sendAchievementTx(
       params: [
         {
           from: wallet,
-          to: wallet, // self-tx; no contract needed
+          to: CONTRACT_ADDRESS,
           value: "0x0",
           data,
         },
@@ -128,10 +120,29 @@ export async function sendAchievementTx(
     if (err?.code === 4001) {
       throw new RitualError("rejected", "You rejected the transaction.");
     }
-    // -32000 / -32603 etc. → generic failure (insufficient funds, RPC down…)
     throw new RitualError(
       "failed",
       err?.message || "The transaction could not be sent.",
     );
   }
+}
+
+/** Read a view function on the contract via the connected wallet's RPC. */
+export async function readContract<T = unknown>(
+  functionName: string,
+  args: readonly unknown[] = [],
+): Promise<T> {
+  const provider = getProvider();
+  if (!provider) throw new RitualError("no_wallet", "No wallet detected.");
+  const data = encodeFunctionData({
+    abi: CONTRACT_ABI,
+    functionName,
+    args,
+  });
+  const result = (await provider.request({
+    method: "eth_call",
+    params: [{ to: CONTRACT_ADDRESS, data }, "latest"],
+  })) as string;
+  // Caller decodes — we keep this generic for simple cases.
+  return result as unknown as T;
 }
