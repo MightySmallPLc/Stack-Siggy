@@ -1,7 +1,4 @@
 // Public surface for the Ritual integration.
-//
-// UI code should import from `@/lib/ritual` (this barrel) rather than the
-// individual files so future refactors stay contained.
 
 export {
   RITUAL_NETWORK_NAME,
@@ -12,8 +9,11 @@ export {
 } from "./networkConfig";
 export {
   ensureRitualNetwork,
-  sendAchievementTx,
+  sendContractTx,
+  readContract,
   RitualError,
+  CONTRACT_ADDRESS,
+  CONTRACT_ABI,
   type RitualErrorKind,
 } from "./ritualService";
 export {
@@ -30,4 +30,12 @@ export {
   type RecordedScore,
   type ScoreOutcome,
 } from "./scoreRecorder";
+export {
+  mintGsiggy,
+  loadMintedGsiggy,
+  fetchOnchainMintStatus,
+  fetchOnchainEligibility,
+  type MintedGsiggy,
+  type MintOutcome,
+} from "./gsiggyMinter";
 export { isNewBestScore } from "./scoreValidation";

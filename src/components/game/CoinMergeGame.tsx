@@ -452,7 +452,7 @@ export function CoinMergeGame() {
       <AchievementsCard bestTier={overallBestTier} state={ach} />
 
       {/* gSiggy eligibility / holder card. */}
-      <GsiggyCard eligible={isEligible} unlockedAt={profile?.unlocked_at ?? null} />
+      <GsiggyCard eligible={isEligible} wallet={address} unlockedAt={profile?.unlocked_at ?? null} />
 
       {/* Ritual testnet status — only rendered for eligible players. */}
       <RitualCard
