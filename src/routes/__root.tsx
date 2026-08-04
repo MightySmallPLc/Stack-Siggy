@@ -75,11 +75,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "apple-mobile-web-app-title", content: "SiggyStack" },
       { name: "application-name", content: "SiggyStack" },
       { name: "theme-color", content: "#12121c" },
-      { title: "SiggyStack — Stack Siggies. Reach Legendary. Mint on Ritual." },
+      { title: "SiggyStack" },
       {
         name: "description",
         content:
-          "SiggyStack is a Ritual-native merge puzzle game where players evolve Siggies, reach the Legendary tier, record achievements on Ritual, and mint an onchain gSiggy NFT.",
+          "A Ritual-native adventure where every achievement lives onchain. Ascend to Legendary, record your progress, and mint your gSiggy NFT.",
       },
       { name: "author", content: "SiggyStack" },
       { property: "og:site_name", content: "SiggyStack" },
