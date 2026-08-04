@@ -5,7 +5,7 @@ interface Props {
   bestTier: number;
 }
 
-// Visual milestone path: DOGE → PEPE → SOL → ETH → BTC → LEGENDARY.
+// Visual milestone path: SPARK → EMBER → PRISM → ORACLE → SOVEREIGN → LEGENDARY.
 // Each node renders in one of three states (completed / current / locked).
 export function ProgressionPath({ bestTier }: Props) {
   const states = tierStates(bestTier);

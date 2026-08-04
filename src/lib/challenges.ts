@@ -24,9 +24,9 @@ export interface ChallengeDef {
 
 // Pool of possible challenges. Three are picked deterministically per day.
 const POOL: ChallengeDef[] = [
-  { id: "reach_sol",        kind: "reach_tier",      title: "Reach SOL",        description: "Forge a SOL tile",       target: 2 },
-  { id: "reach_eth",        kind: "reach_tier",      title: "Reach ETH",        description: "Forge an ETH tile",      target: 3 },
-  { id: "reach_btc",        kind: "reach_tier",      title: "Reach BTC",        description: "Forge a BTC tile",       target: 4 },
+  { id: "reach_prism",        kind: "reach_tier",      title: "Reach Prism",        description: "Forge a Prism Siggy",       target: 2 },
+  { id: "reach_oracle",        kind: "reach_tier",      title: "Reach Oracle",        description: "Forge an Oracle Siggy",      target: 3 },
+  { id: "reach_sovereign",        kind: "reach_tier",      title: "Reach Sovereign",        description: "Forge a Sovereign Siggy",       target: 4 },
   { id: "reach_legendary",  kind: "reach_tier",      title: "Ritual Legend",    description: "Unlock the LEGENDARY tile", target: 5 },
   { id: "score_500",        kind: "score_at_least",  title: "Score 500+",       description: "Finish a run with 500+ points",  target: 500 },
   { id: "score_1000",       kind: "score_at_least",  title: "Score 1,000+",     description: "Finish a run with 1,000+ points", target: 1000 },
