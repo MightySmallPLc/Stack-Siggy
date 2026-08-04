@@ -1,7 +1,7 @@
 {
   "name": "SiggyStack",
   "short_name": "SiggyStack",
-  "description": "SiggyStack is a Ritual-native merge puzzle game where players evolve Siggies, reach the Legendary tier, record achievements on Ritual, and mint an onchain gSiggy NFT.",
+  "description": "A Ritual-native adventure where every achievement lives onchain. Ascend to Legendary, record your progress, and mint your gSiggy NFT.",
   "start_url": "/",
   "display": "standalone",
   "orientation": "portrait",

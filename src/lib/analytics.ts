@@ -12,7 +12,7 @@
 //   track("wallet_connected", { wallet });
 //
 // FUTURE: register a provider once at app boot:
-//   window.addEventListener("siggystack:analytics", (e) => {
+//   window.addEventListener("coin-merge:analytics", (e) => {
 //     provider.capture(e.detail.event, e.detail.props);
 //   });
 
@@ -32,7 +32,7 @@ export interface AnalyticsPayload {
   [key: string]: string | number | boolean | null | undefined;
 }
 
-const EVENT_NAME = "siggystack:analytics";
+const EVENT_NAME = "coin-merge:analytics";
 
 /** Fire-and-forget event. Safe to call during SSR (no-op). */
 export function track(event: AnalyticsEvent, props: AnalyticsPayload = {}): void {

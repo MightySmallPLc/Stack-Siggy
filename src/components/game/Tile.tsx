@@ -7,17 +7,17 @@ interface Props {
   gap: number;
 }
 
-// Visual metadata for each Siggy tier. Kept here (not in game logic) so the
+// Visual metadata for each coin tier. Kept here (not in game logic) so the
 // game module stays pure and easy to edit.
 const COIN_META: Record<
   (typeof COINS)[number],
   { symbol: string; short: string }
 > = {
-  SPARK: { symbol: "✦", short: "SPARK" },
-  EMBER: { symbol: "◆", short: "EMBER" },
-  PRISM: { symbol: "◈", short: "PRISM" },
-  ORACLE: { symbol: "◉", short: "ORACLE" },
-  SOVEREIGN: { symbol: "❖", short: "SOVRN" },
+  DOGE: { symbol: "Ð", short: "DOGE" },
+  PEPE: { symbol: "ᵱ", short: "PEPE" },
+  SOL: { symbol: "◎", short: "SOL" },
+  ETH: { symbol: "Ξ", short: "ETH" },
+  BTC: { symbol: "₿", short: "BTC" },
   LEGENDARY: { symbol: "★", short: "RITUAL" },
 };
 
