@@ -366,7 +366,7 @@ export function SiggyStackGame() {
       <header className="game-header">
         <div className="game-header__top">
           <div>
-            <div className="game-eyebrow">CRYPTO · 2048</div>
+            <div className="game-eyebrow">RITUAL · MERGE PUZZLE</div>
             <h1 className="game-title">SiggyStack</h1>
           </div>
           <button
