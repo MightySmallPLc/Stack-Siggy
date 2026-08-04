@@ -52,7 +52,7 @@ import { track } from "@/lib/analytics";
 import { loadRecorded, type RecordedAchievement } from "@/lib/ritual";
 import { useWallet } from "@/hooks/useWallet";
 
-const BEST_KEY = "siggystack-best";
+const BEST_KEY = "coin-merge-best";
 const LEGENDARY_TIER = COINS.length - 1;
 
 export function SiggyStackGame() {

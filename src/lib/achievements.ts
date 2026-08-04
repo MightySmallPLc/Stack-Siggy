@@ -24,11 +24,11 @@ export interface TierMilestone {
 }
 
 export const TIER_MILESTONES: TierMilestone[] = [
-  { tier: 0, coin: "SPARK", label: "Beginner" },
-  { tier: 1, coin: "EMBER", label: "Explorer" },
-  { tier: 2, coin: "PRISM", label: "Rising" },
-  { tier: 3, coin: "ORACLE", label: "Skilled" },
-  { tier: 4, coin: "SOVEREIGN", label: "Elite" },
+  { tier: 0, coin: "DOGE", label: "Beginner" },
+  { tier: 1, coin: "PEPE", label: "Explorer" },
+  { tier: 2, coin: "SOL", label: "Rising" },
+  { tier: 3, coin: "ETH", label: "Skilled" },
+  { tier: 4, coin: "BTC", label: "Elite" },
   { tier: 5, coin: "LEGENDARY", label: "Ritual Legend" },
 ];
 
@@ -48,9 +48,9 @@ export function tierStates(bestTier: number): TierState[] {
 
 export type AchievementId =
   | "first_merge"
-  | "reach_prism"
-  | "reach_oracle"
-  | "reach_sovereign"
+  | "reach_sol"
+  | "reach_eth"
+  | "reach_btc"
   | "reach_legendary"
   | "daily_high_score";
 
@@ -61,10 +61,10 @@ export interface AchievementDef {
 }
 
 export const ACHIEVEMENTS: AchievementDef[] = [
-  { id: "first_merge",       title: "First Merge",       description: "Merge your first two Siggies" },
-  { id: "reach_prism",         title: "Reach Prism",         description: "Forge a Prism Siggy" },
-  { id: "reach_oracle",         title: "Reach Oracle",         description: "Forge an Oracle Siggy" },
-  { id: "reach_sovereign",         title: "Reach Sovereign",         description: "Forge a Sovereign Siggy" },
+  { id: "first_merge",       title: "First Merge",       description: "Merge your first two coins" },
+  { id: "reach_sol",         title: "Reach SOL",         description: "Reach the SOL tier" },
+  { id: "reach_eth",         title: "Reach ETH",         description: "Reach the ETH tier" },
+  { id: "reach_btc",         title: "Reach BTC",         description: "Reach the BTC tier" },
   { id: "reach_legendary",   title: "Ritual Legend",     description: "Unlock the LEGENDARY tile" },
   { id: "daily_high_score",  title: "Daily High Score",  description: "Claim today's #1 leaderboard spot" },
 ];
@@ -76,7 +76,7 @@ export interface AchievementState {
   dailyHighScore: boolean;
 }
 
-const LOCAL_KEY_BASE = "siggystack-achievements";
+const LOCAL_KEY_BASE = "coin-merge-achievements";
 // Per-wallet key so different wallets in the same browser stay separate.
 function keyFor(wallet: string | null | undefined): string {
   return wallet ? `${LOCAL_KEY_BASE}:${wallet.toLowerCase()}` : LOCAL_KEY_BASE;
@@ -110,9 +110,9 @@ export function unlockedSet(
 ): Set<AchievementId> {
   const set = new Set<AchievementId>();
   if (state.firstMerge || bestTier >= 1) set.add("first_merge");
-  if (bestTier >= 2) set.add("reach_prism");
-  if (bestTier >= 3) set.add("reach_oracle");
-  if (bestTier >= 4) set.add("reach_sovereign");
+  if (bestTier >= 2) set.add("reach_sol");
+  if (bestTier >= 3) set.add("reach_eth");
+  if (bestTier >= 4) set.add("reach_btc");
   if (bestTier >= 5) set.add("reach_legendary");
   if (state.dailyHighScore) set.add("daily_high_score");
   return set;

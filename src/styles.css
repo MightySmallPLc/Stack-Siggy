@@ -86,26 +86,26 @@
   --ring: oklch(0.72 0.18 60);
 
   /* Coin tier colors */
-  --coin-spark: oklch(0.55 0.02 270);
-  --coin-spark-fg: oklch(0.98 0.01 270);
-  --coin-ember: oklch(0.62 0.18 145);
-  --coin-ember-fg: oklch(0.12 0.02 145);
-  --coin-prism: oklch(0.55 0.22 300);
-  --coin-prism-fg: oklch(0.98 0.01 300);
-  --coin-oracle: oklch(0.58 0.18 250);
-  --coin-oracle-fg: oklch(0.98 0.01 250);
-  --coin-sovereign: oklch(0.78 0.17 75);
-  --coin-sovereign-fg: oklch(0.18 0.04 75);
+  --coin-doge: oklch(0.55 0.02 270);
+  --coin-doge-fg: oklch(0.98 0.01 270);
+  --coin-pepe: oklch(0.62 0.18 145);
+  --coin-pepe-fg: oklch(0.12 0.02 145);
+  --coin-sol: oklch(0.55 0.22 300);
+  --coin-sol-fg: oklch(0.98 0.01 300);
+  --coin-eth: oklch(0.58 0.18 250);
+  --coin-eth-fg: oklch(0.98 0.01 250);
+  --coin-btc: oklch(0.78 0.17 75);
+  --coin-btc-fg: oklch(0.18 0.04 75);
   --coin-legendary-a: oklch(0.78 0.2 85);
   --coin-legendary-b: oklch(0.65 0.25 320);
 
   --board-bg: oklch(0.24 0.03 270);
   --cell-bg: oklch(0.28 0.03 270);
 
-  --chart-1: var(--coin-sovereign);
-  --chart-2: var(--coin-ember);
-  --chart-3: var(--coin-prism);
-  --chart-4: var(--coin-oracle);
+  --chart-1: var(--coin-btc);
+  --chart-2: var(--coin-pepe);
+  --chart-3: var(--coin-sol);
+  --chart-4: var(--coin-eth);
   --chart-5: var(--coin-legendary-a);
   --sidebar: var(--card);
   --sidebar-foreground: var(--foreground);
@@ -183,7 +183,7 @@
   letter-spacing: -0.03em;
   line-height: 1.05;
   margin-top: 0.15rem;
-  background: linear-gradient(135deg, var(--coin-sovereign) 0%, var(--coin-legendary-b) 100%);
+  background: linear-gradient(135deg, var(--coin-btc) 0%, var(--coin-legendary-b) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -247,7 +247,7 @@
   right: 10px;
   font-size: 0.75rem;
   font-weight: 700;
-  color: var(--coin-sovereign);
+  color: var(--coin-btc);
   animation: score-gain 850ms cubic-bezier(0.22, 1, 0.36, 1) both;
   pointer-events: none;
 }
@@ -350,14 +350,14 @@
 }
 
 /* --- Tier visuals --- */
-.coin-tile--spark {
+.coin-tile--doge {
   background: linear-gradient(180deg, oklch(0.58 0.02 270), oklch(0.48 0.02 270));
-  color: var(--coin-spark-fg);
+  color: var(--coin-doge-fg);
   box-shadow: 0 2px 0 oklch(0 0 0 / 0.25), inset 0 1px 0 oklch(1 0 0 / 0.08);
 }
 .coin-tile--ember {
   background: linear-gradient(180deg, oklch(0.7 0.2 145), oklch(0.55 0.18 145));
-  color: var(--coin-ember-fg);
+  color: var(--coin-pepe-fg);
   box-shadow:
     0 2px 0 oklch(0 0 0 / 0.25),
     0 4px 14px -6px oklch(0.62 0.18 145 / 0.55),
@@ -365,7 +365,7 @@
 }
 .coin-tile--prism {
   background: linear-gradient(135deg, oklch(0.62 0.25 300), oklch(0.45 0.22 285));
-  color: var(--coin-prism-fg);
+  color: var(--coin-sol-fg);
   box-shadow:
     0 2px 0 oklch(0 0 0 / 0.3),
     0 6px 20px -6px oklch(0.55 0.22 300 / 0.65),
@@ -373,7 +373,7 @@
 }
 .coin-tile--oracle {
   background: linear-gradient(160deg, oklch(0.68 0.16 250), oklch(0.42 0.18 255));
-  color: var(--coin-oracle-fg);
+  color: var(--coin-eth-fg);
   box-shadow:
     0 2px 0 oklch(0 0 0 / 0.3),
     0 8px 24px -8px oklch(0.55 0.2 250 / 0.7),
@@ -381,7 +381,7 @@
 }
 .coin-tile--sovereign {
   background: linear-gradient(135deg, oklch(0.88 0.16 85), oklch(0.7 0.18 70) 55%, oklch(0.55 0.16 60));
-  color: var(--coin-sovereign-fg);
+  color: var(--coin-btc-fg);
   box-shadow:
     0 2px 0 oklch(0 0 0 / 0.3),
     0 10px 28px -8px oklch(0.78 0.17 75 / 0.7),
@@ -519,7 +519,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: linear-gradient(135deg, var(--coin-sovereign), var(--coin-legendary-b));
+  background: linear-gradient(135deg, var(--coin-btc), var(--coin-legendary-b));
   color: oklch(0.15 0.02 280);
   font-weight: 700;
   padding: 0.8rem 1.6rem;
@@ -565,7 +565,7 @@
   font-size: 1.9rem;
   font-weight: 800;
   letter-spacing: -0.02em;
-  background: linear-gradient(135deg, var(--coin-sovereign), var(--coin-legendary-b));
+  background: linear-gradient(135deg, var(--coin-btc), var(--coin-legendary-b));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;

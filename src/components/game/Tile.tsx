@@ -13,11 +13,11 @@ const COIN_META: Record<
   (typeof COINS)[number],
   { symbol: string; short: string }
 > = {
-  SPARK: { symbol: "✦", short: "SPARK" },
-  EMBER: { symbol: "◆", short: "EMBER" },
-  PRISM: { symbol: "◈", short: "PRISM" },
-  ORACLE: { symbol: "◉", short: "ORACLE" },
-  SOVEREIGN: { symbol: "❖", short: "SOVRN" },
+  DOGE: { symbol: "✦", short: "DOGE" },
+  PEPE: { symbol: "◆", short: "PEPE" },
+  SOL: { symbol: "◈", short: "SOL" },
+  ETH: { symbol: "◉", short: "ETH" },
+  BTC: { symbol: "❖", short: "SOVRN" },
   LEGENDARY: { symbol: "★", short: "RITUAL" },
 };
 

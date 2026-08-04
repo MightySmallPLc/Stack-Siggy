@@ -6,7 +6,7 @@ import { track } from "@/lib/analytics";
 // On mobile without an injected provider, we deep-link into MetaMask's in-app browser.
 // No heavy dependencies — beginner-friendly and easy to swap later for wagmi/web3modal.
 
-const STORAGE_KEY = "siggystack-wallet-connected";
+const STORAGE_KEY = "coin-merge-wallet-connected";
 
 type Eip1193Provider = {
   request: (args: { method: string; params?: unknown[] }) => Promise<unknown>;

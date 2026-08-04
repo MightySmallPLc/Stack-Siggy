@@ -17,7 +17,7 @@ import { COINS } from "@/lib/game";
 
 // Local cache so disconnected players keep their progress in the browser.
 // When a wallet connects we merge local progress into the DB row.
-const LOCAL_KEY = "siggystack-gsiggy";
+const LOCAL_KEY = "coin-merge-gsiggy";
 
 export interface GsiggyProfile {
   wallet_address: string;
