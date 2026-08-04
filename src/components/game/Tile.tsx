@@ -7,7 +7,7 @@ interface Props {
   gap: number;
 }
 
-// Visual metadata for each Siggy tier. Kept here (not in game logic) so the
+// Visual metadata for each coin tier. Kept here (not in game logic) so the
 // game module stays pure and easy to edit.
 const COIN_META: Record<
   (typeof COINS)[number],
