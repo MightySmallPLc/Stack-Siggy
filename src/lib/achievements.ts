@@ -1,4 +1,4 @@
-// Lightweight achievement + progression system for Coin Merge.
+// Lightweight achievement + progression system for SiggyStack.
 //
 // Kept fully separate from gameplay (game.ts) — gameplay never reads from
 // here and this module never mutates the board. Achievements are derived
@@ -76,7 +76,7 @@ export interface AchievementState {
   dailyHighScore: boolean;
 }
 
-const LOCAL_KEY_BASE = "coin-merge-achievements";
+const LOCAL_KEY_BASE = "siggystack-achievements";
 // Per-wallet key so different wallets in the same browser stay separate.
 function keyFor(wallet: string | null | undefined): string {
   return wallet ? `${LOCAL_KEY_BASE}:${wallet.toLowerCase()}` : LOCAL_KEY_BASE;

@@ -1,4 +1,4 @@
-// Core 2048-style game logic for Coin Merge.
+// Core 2048-style game logic for SiggyStack.
 //
 // Board is a 4x4 grid of Tile | null. Each Tile has a unique id so the UI
 // can animate movement smoothly. Flags `mergedFrom` and `isNew` are only

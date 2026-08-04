@@ -1,4 +1,4 @@
-// Daily challenges for Coin Merge.
+// Daily challenges for SiggyStack.
 //
 // Three challenges are generated deterministically per UTC date so every
 // player sees the same set today (and a fresh set tomorrow). Progress is
@@ -51,7 +51,7 @@ function todayUtc(): string {
 }
 
 export function dailyChallenges(date: string = todayUtc()): ChallengeDef[] {
-  const seed = hashSeed(`coin-merge:${date}`);
+  const seed = hashSeed(`siggystack:${date}`);
   const pool = [...POOL];
   // Fisher-Yates with seeded LCG so the order is stable per day.
   let s = seed || 1;
@@ -70,8 +70,8 @@ export interface ChallengeProgress {
   completed: Record<string, boolean>;
 }
 
-const KEY = "coin-merge-challenges";
-const HISTORY_KEY = "coin-merge-challenges-history";
+const KEY = "siggystack-challenges";
+const HISTORY_KEY = "siggystack-challenges-history";
 
 function progressKey(wallet?: string | null): string {
   return wallet ? `${KEY}:${wallet.toLowerCase()}` : KEY;

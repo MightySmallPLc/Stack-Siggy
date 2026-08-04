@@ -1,4 +1,4 @@
-# Coin Merge — Launch Checklist
+# SiggyStack — Launch Checklist
 
 Use this list before flipping the project to "published". Tick each row in
 the preview, then on a mobile device, then on the published URL.
