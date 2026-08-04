@@ -52,10 +52,10 @@ import { track } from "@/lib/analytics";
 import { loadRecorded, type RecordedAchievement } from "@/lib/ritual";
 import { useWallet } from "@/hooks/useWallet";
 
-const BEST_KEY = "coin-merge-best";
+const BEST_KEY = "siggystack-best";
 const LEGENDARY_TIER = COINS.length - 1;
 
-export function CoinMergeGame() {
+export function SiggyStackGame() {
   const [board, setBoard] = useState<BoardType>(() => initialBoard());
   const [score, setScore] = useState(0);
   // Load `best` after mount to avoid SSR/client hydration mismatch.
@@ -366,8 +366,8 @@ export function CoinMergeGame() {
       <header className="game-header">
         <div className="game-header__top">
           <div>
-            <div className="game-eyebrow">CRYPTO · 2048</div>
-            <h1 className="game-title">Coin Merge</h1>
+            <div className="game-eyebrow">RITUAL · MERGE PUZZLE</div>
+            <h1 className="game-title">SiggyStack</h1>
           </div>
           <button
             className="btn-icon"

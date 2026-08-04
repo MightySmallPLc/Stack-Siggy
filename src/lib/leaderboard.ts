@@ -1,4 +1,4 @@
-// Daily leaderboard logic for Coin Merge.
+// Daily leaderboard logic for SiggyStack.
 // Kept completely separate from gameplay so it's easy to edit later.
 import { supabase } from "@/integrations/supabase/client";
 

@@ -39,5 +39,5 @@ function pickMessage(p: Props): string | null {
     return "gSiggy eligibility unlocked · holders shine on the leaderboard";
   if (p.bestTier >= 2)
     return "Reach Ritual LEGENDARY to unlock gSiggy eligibility";
-  return "Merge coins · climb tiers · become a Ritual Legend";
+  return "Stack Siggies · climb tiers · become a Ritual Legend";
 }

@@ -1,4 +1,4 @@
-// Daily streak tracking for Coin Merge.
+// Daily streak tracking for SiggyStack.
 //
 // A "streak" = consecutive UTC days (ending today or yesterday) where the
 // wallet posted at least one leaderboard score. The streak stays alive if

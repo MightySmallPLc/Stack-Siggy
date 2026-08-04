@@ -1,4 +1,4 @@
-// Core 2048-style game logic for Coin Merge.
+// Core 2048-style game logic for SiggyStack.
 //
 // Board is a 4x4 grid of Tile | null. Each Tile has a unique id so the UI
 // can animate movement smoothly. Flags `mergedFrom` and `isNew` are only
@@ -6,8 +6,8 @@
 
 export const SIZE = 4;
 
-// Coin progression — index represents tier (0 = DOGE, 5 = LEGENDARY).
-export const COINS = ["DOGE", "PEPE", "SOL", "ETH", "BTC", "LEGENDARY"] as const;
+// Siggy progression — index represents tier (0 = SPARK, 5 = LEGENDARY).
+export const COINS = ["SPARK", "EMBER", "PRISM", "ORACLE", "SOVEREIGN", "LEGENDARY"] as const;
 export type Coin = (typeof COINS)[number];
 
 export type Tile = {
@@ -32,7 +32,7 @@ export function emptyBoard(): Board {
   return Array.from({ length: SIZE }, () => Array<Tile | null>(SIZE).fill(null));
 }
 
-// Place a new DOGE tile (tier 0) at a random empty cell.
+// Place a new SPARK tile (tier 0) at a random empty cell.
 export function spawnRandomTile(board: Board): Board {
   const empties: [number, number][] = [];
   for (let r = 0; r < SIZE; r++)
@@ -44,7 +44,7 @@ export function spawnRandomTile(board: Board): Board {
   return next;
 }
 
-// Always start with exactly two DOGE tiles.
+// Always start with exactly two SPARK tiles.
 export function initialBoard(): Board {
   let b = emptyBoard();
   b = spawnRandomTile(b);

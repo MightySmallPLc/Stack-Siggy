@@ -1,4 +1,4 @@
-// gSiggy eligibility logic for Coin Merge.
+// gSiggy eligibility logic for SiggyStack.
 //
 // Purpose: track which wallets have unlocked the Ritual LEGENDARY tile so
 // they will be eligible for a future gSiggy NFT badge.
@@ -17,7 +17,7 @@ import { COINS } from "@/lib/game";
 
 // Local cache so disconnected players keep their progress in the browser.
 // When a wallet connects we merge local progress into the DB row.
-const LOCAL_KEY = "coin-merge-gsiggy";
+const LOCAL_KEY = "siggystack-gsiggy";
 
 export interface GsiggyProfile {
   wallet_address: string;
