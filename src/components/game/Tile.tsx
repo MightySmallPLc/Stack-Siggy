@@ -80,13 +80,25 @@ export function Tile({ tile, cellSize, gap }: Props) {
           </>
         ) : (
           <>
-            <span className="coin-tile__symbol" style={{ fontSize: symbolSize }}>
-              {meta.symbol}
-            </span>
+            {meta.logo ? (
+              <img
+                src={meta.logo}
+                alt={meta.short}
+                className="coin-tile__logo"
+                width={logoSize}
+                height={logoSize}
+                draggable={false}
+              />
+            ) : (
+              <span className="coin-tile__symbol" style={{ fontSize: symbolSize }}>
+                {meta.symbol}
+              </span>
+            )}
             <span className="coin-tile__label" style={{ fontSize: labelSize }}>
               {meta.short}
             </span>
           </>
+
         )}
       </div>
       {/* Sheen overlay — animates on merge/new for a premium feel. */}
