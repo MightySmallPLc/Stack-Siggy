@@ -1,5 +1,10 @@
 import { COINS, type Tile as TileType } from "@/lib/game";
 import ritualLogo from "@/assets/ritual-logo.png";
+import dogeLogo from "@/assets/coins/doge.svg";
+import pepeLogo from "@/assets/coins/pepe.png";
+import solLogo from "@/assets/coins/sol.svg";
+import ethLogo from "@/assets/coins/eth.svg";
+import btcLogo from "@/assets/coins/btc.svg";
 
 interface Props {
   tile: TileType;
@@ -11,15 +16,16 @@ interface Props {
 // game module stays pure and easy to edit.
 const COIN_META: Record<
   (typeof COINS)[number],
-  { symbol: string; short: string }
+  { symbol: string; short: string; logo?: string }
 > = {
-  DOGE: { symbol: "Ð", short: "DOGE" },
-  PEPE: { symbol: "ᵱ", short: "PEPE" },
-  SOL: { symbol: "◎", short: "SOL" },
-  ETH: { symbol: "Ξ", short: "ETH" },
-  BTC: { symbol: "₿", short: "BTC" },
+  DOGE: { symbol: "Ð", short: "DOGE", logo: dogeLogo },
+  PEPE: { symbol: "ᵱ", short: "PEPE", logo: pepeLogo },
+  SOL: { symbol: "◎", short: "SOL", logo: solLogo },
+  ETH: { symbol: "Ξ", short: "ETH", logo: ethLogo },
+  BTC: { symbol: "₿", short: "BTC", logo: btcLogo },
   LEGENDARY: { symbol: "★", short: "RITUAL" },
 };
+
 
 export function Tile({ tile, cellSize, gap }: Props) {
   const x = tile.col * (cellSize + gap);
@@ -74,13 +80,25 @@ export function Tile({ tile, cellSize, gap }: Props) {
           </>
         ) : (
           <>
-            <span className="coin-tile__symbol" style={{ fontSize: symbolSize }}>
-              {meta.symbol}
-            </span>
+            {meta.logo ? (
+              <img
+                src={meta.logo}
+                alt={meta.short}
+                className="coin-tile__logo"
+                width={logoSize}
+                height={logoSize}
+                draggable={false}
+              />
+            ) : (
+              <span className="coin-tile__symbol" style={{ fontSize: symbolSize }}>
+                {meta.symbol}
+              </span>
+            )}
             <span className="coin-tile__label" style={{ fontSize: labelSize }}>
               {meta.short}
             </span>
           </>
+
         )}
       </div>
       {/* Sheen overlay — animates on merge/new for a premium feel. */}
